@@ -1,0 +1,83 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#>.
+@prefix rml: <http://semweb.mmlab.be/ns/rml#>.
+@prefix ql: <http://semweb.mmlab.be/ns/ql#>.
+@prefix ex: <http://example.org/>.
+@prefix schema: <https://schema.org/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+@base <http://events.example.com/mapping/> .
+
+<#EventMapping>
+  rml:logicalSource [
+    rml:source "events.json";
+    rml:referenceFormulation ql:JSONPath;
+    rml:iterator "$.events[*]"
+  ];
+
+  rr:subjectMap [
+    rr:template "http://example.org/event/{id}";
+    rr:class schema:Event
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate schema:name;
+    rr:objectMap [ rml:reference "name" ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate schema:eventType;
+    rr:objectMap [ rml:reference "category" ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate schema:startDate;
+    rr:objectMap [
+      rml:reference "start";
+      rr:datatype xsd:dateTime
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate schema:endDate;
+    rr:objectMap [
+      rml:reference "end";
+      rr:datatype xsd:dateTime
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate schema:price;
+    rr:objectMap [
+      rml:reference "price";
+      rr:datatype xsd:decimal
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate schema:location;
+    rr:objectMap [
+      rr:template "http://example.org/venue/{venue.id}"
+    ]
+  ].
+
+  <#VenueMapping>
+  rml:logicalSource [
+    rml:source "events.json";
+    rml:referenceFormulation ql:JSONPath;
+    rml:iterator "$.events[*].venue"
+  ];
+
+  rr:subjectMap [
+    rr:template "http://example.org/venue/{id}";
+    rr:class schema:Place
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate schema:name;
+    rr:objectMap [ rml:reference "name" ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate schema:addressLocality;
+    rr:objectMap [ rml:reference "city" ]
+  ].

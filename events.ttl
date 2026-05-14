@@ -1,0 +1,24 @@
+
+<http://example.org/event/e1> a <https://schema.org/Event>;
+  <https://schema.org/endDate> "2026-05-10T13:00:00"^^<http://www.w3.org/2001/XMLSchema#dateTime>;
+  <https://schema.org/eventType> "workshop";
+  <https://schema.org/location> <http://example.org/venue/v1>;
+  <https://schema.org/name> "AI Workshop";
+  <https://schema.org/price> 0.0;
+  <https://schema.org/startDate> "2026-05-10T10:00:00"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
+
+<http://example.org/event/e2> a <https://schema.org/Event>;
+  <https://schema.org/endDate> "2026-05-11T20:30:00"^^<http://www.w3.org/2001/XMLSchema#dateTime>;
+  <https://schema.org/eventType> "meetup";
+  <https://schema.org/location> <http://example.org/venue/v2>;
+  <https://schema.org/name> "Data Science Meetup";
+  <https://schema.org/price> 15.0;
+  <https://schema.org/startDate> "2026-05-11T18:00:00"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
+
+<http://example.org/venue/v1> a <https://schema.org/Place>;
+  <https://schema.org/addressLocality> "Thessaloniki";
+  <https://schema.org/name> "AUTH Main Hall" .
+
+<http://example.org/venue/v2> a <https://schema.org/Place>;
+  <https://schema.org/addressLocality> "Thessaloniki";
+  <https://schema.org/name> "Innovation Hub" .
