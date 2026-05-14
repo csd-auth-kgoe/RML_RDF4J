@@ -27,11 +27,11 @@ public class EnrichEvents {
 
         Model model = Rio.parse(
                 new FileInputStream(rmlOutputFile),
-                "http://events.example.com/mapping/",
+                "http://example.org/event/",
                 RDFFormat.TURTLE
         );
 
-        String EX = "http://events.example.com/mapping/";
+        String EX = "http://example.org/event/";
         String SCHEMA = "https://schema.org/";
 
         IRI price = vf.createIRI(SCHEMA, "price");
